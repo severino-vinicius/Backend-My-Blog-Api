@@ -1,6 +1,12 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
+const findAllServ = async () => {
+  const responseUser = await User.findAll({
+    attributes: { exclude: ['password'] } });
+  return { status: 200, data: responseUser };
+};
+
 const insertUserServ = async (dataUser) => {
   const { displayName, email, password, image } = dataUser;
   const checkEmailInUse = await User.findOne({ where: { email } });
@@ -21,5 +27,6 @@ const insertUserServ = async (dataUser) => {
 };
 
 module.exports = {
+  findAllServ,
   insertUserServ,
 };

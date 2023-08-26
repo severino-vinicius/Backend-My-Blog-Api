@@ -1,9 +1,9 @@
 const { userService } = require('../services');
 
-// const findAllCont = async (req, res) => {
-//   const { status, data } = await userService.findAllServ();
-//   res.status(status).json(data);
-// };
+const findAllCont = async (req, res) => {
+  const { status, data } = await userService.findAllServ();
+  res.status(status).json(data);
+};
 
 const insertUserCont = async (req, res) => {
   const dataUser = req.body;
@@ -12,6 +12,6 @@ const insertUserCont = async (req, res) => {
 };
 
 module.exports = {
-  // findAllCont,
+  findAllCont,
   insertUserCont,
 };
