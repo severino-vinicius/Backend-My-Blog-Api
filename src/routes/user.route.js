@@ -7,4 +7,6 @@ route.post('/', checkNewUser, userController.insertUserCont);
 
 route.get('/', authMiddleware, userController.findAllCont);
 
+route.get('/:userId', authMiddleware, userController.findByIdCont);
+
 module.exports = route;

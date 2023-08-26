@@ -7,6 +7,15 @@ const findAllServ = async () => {
   return { status: 200, data: responseUser };
 };
 
+const findByIdServ = async (userId) => {
+  const responseUser = await User.findByPk(userId, {
+    attributes: { exclude: ['password'] } });
+  if (!responseUser) {
+    return { status: 404, data: { message: 'User does not exist' } };
+  }
+  return { status: 200, data: responseUser };
+};
+
 const insertUserServ = async (dataUser) => {
   const { displayName, email, password, image } = dataUser;
   const checkEmailInUse = await User.findOne({ where: { email } });
@@ -28,5 +37,6 @@ const insertUserServ = async (dataUser) => {
 
 module.exports = {
   findAllServ,
+  findByIdServ,
   insertUserServ,
 };
