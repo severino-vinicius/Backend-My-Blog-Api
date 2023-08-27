@@ -5,4 +5,6 @@ const authMiddleware = require('../middlewares/auth.middleware');
 
 route.post('/', checkNewCategory, authMiddleware, categoryController.insertCategoryCont);
 
+route.get('/', authMiddleware, categoryController.findAllCont);
+
 module.exports = route;
