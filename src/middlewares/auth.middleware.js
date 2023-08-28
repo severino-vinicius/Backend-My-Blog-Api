@@ -7,8 +7,8 @@ const authMiddleware = (req, res, next) => {
       return res.status(401).json({ message: 'Token not found' });
     }
     const [, token] = authorization.split(' ');
-    jwt.verify(token, process.env.JWT_SECRET);
-
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
     next();
   } catch (err) {
     res.status(401).json({ message: 'Expired or invalid token' });
