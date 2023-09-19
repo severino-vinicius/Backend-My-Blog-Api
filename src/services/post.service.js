@@ -18,6 +18,7 @@ const insertPostServ = async (dataPost, userId) => {
   const postCategory = categoryIds.map((id) => ({ postId: createdPost.id, categoryId: id }));
 
   await PostCategory.bulkCreate(postCategory);
+  // const findById = await BlogPost.findByPk(createdPost.id);
 
   return { status: 201, data: createdPost };
 };
